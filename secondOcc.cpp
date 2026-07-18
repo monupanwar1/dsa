@@ -93,27 +93,30 @@ int secondHighestOccurrence1(vector<int> &arr)
   return ans;
 }
 
-int secondHighestOccurrence2(vector<int> &arr)
-{
 
-  unordered_map<int, int> freq;
 
-  for (int x : arr)
-  {
+
+
+int secondHighestOccurrence2(vector<int>&arr){
+
+  unordered_map<int,int>freq;
+
+  for(int x:arr){
     freq[x]++;
   }
+
+
 
   int maxFreq = 0;
   int secondFreq = 0;
   int maxEle = -1;
   int ans = -1;
 
-  for (int x : arr)
-  {
-    if (freq[x] == -1)
-    {
+  for(int x:arr){
+    if(freq[x]==-1){
       continue;
     }
+    
     int count = freq[x];
 
     if (count > maxFreq)
@@ -129,10 +132,15 @@ int secondHighestOccurrence2(vector<int> &arr)
       secondFreq = count;
       ans = x;
     }
-    freq[x] = -1;
+    freq[x]=-1;
   }
   return ans;
 }
+
+
+
+
+
 
 int main()
 {
