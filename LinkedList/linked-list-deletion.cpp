@@ -105,22 +105,24 @@ Node *removeK(Node *head, int k)
   }
 
   Node *temp = head;
-  int count = 1;
+  int count = 0;
+  Node *prev = nullptr;
 
   while (temp != nullptr)
   {
-    if (count == k - 1)
+    count++;
+
+    if (count == k)
     {
+
+     
+      prev->next = prev->next->next;
+      delete temp;
       break;
     }
+    prev = temp;
     temp = temp->next;
-    count += 1;
   }
-
-  Node *nodeToDelete = temp->next;
-  temp->next = temp->next->next;
-
-  delete nodeToDelete;
 
   return head;
 }
@@ -131,7 +133,7 @@ int main()
 
   Node *head = arrayToLinkedList(arr);
 
-  head = removeK(head, 4);
+  head = removeK(head, 2);
 
   print(head);
 }
