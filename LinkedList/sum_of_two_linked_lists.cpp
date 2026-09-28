@@ -46,6 +46,44 @@ void print(Node *head)
   cout << endl;
 }
 
+Node *sumOfLL2(Node *head1, Node *head2)
+{
+
+  int carr = 0;
+
+  Node *dummy = new Node(0);
+  Node *temp = dummy;
+
+  while (head1 != nullptr || head2 != nullptr)
+  {
+    int sum = carr;
+
+    if (head1 != nullptr)
+    {
+      sum += head1->data;
+      head1 = head1->next;
+    }
+
+    if (head2 != nullptr)
+    {
+      sum += head2->data;
+      head2 = head2->next;
+    }
+
+    temp->next = new Node(sum % 10);
+    temp = temp->next;
+
+    carr = sum / 10;
+  }
+
+  if (carr != 0)
+  {
+    temp->next = new Node(carr);
+  }
+
+  return dummy->next;
+};
+
 Node *sumOfLL(Node *head1, Node *head2)
 {
   vector<int> arr;
@@ -71,7 +109,7 @@ Node *sumOfLL(Node *head1, Node *head2)
 
     carr = sum / 10;
   }
-  
+
   if (carr != 0)
   {
     arr.push_back(carr);
@@ -106,6 +144,11 @@ int main()
 
   cout << "Sum: ";
   print(result);
+
+  Node *result2 = sumOfLL2(head1, head2);
+
+  cout << "Sum: ";
+  print(result2);
 
   return 0;
 }
