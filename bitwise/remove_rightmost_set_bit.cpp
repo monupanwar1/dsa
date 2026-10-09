@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int removeRightmostSetBit(int n)
+
+{
+  return n & (n - 1);
+}
+
+int main()
+{
+
+  int n = 12;
+
+  cout << removeRightmostSetBit(n) << endl;
+
+  return 0;
+}
